@@ -1,0 +1,27 @@
+# Gradle: служебные данные и результаты сборки (пересобираются командой)
+.gradle/
+build/
+
+# Локальный тестовый сервер: миры, логи, authmod_data.json с паролями
+run/
+run-data/
+logs/
+
+# Локальный maven-репозиторий, куда публикует задача publish
+mcmodsrepo/
+
+# Файлы IDE (IntelliJ IDEA, Eclipse, VS Code) — у каждого свои
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+*.launch
+bin/
+out/
+
+# Служебное macOS
+.DS_Store
