@@ -27,7 +27,7 @@ Server-side authentication mod with `/register` and `/login`.
 
 ## Installation
 
-1. Download `authmod-1.5.0.jar` from [Releases](https://github.com/d-society1/AuthMod/releases)
+1. Download `authmod-1.5.1.jar` from [Releases](https://github.com/d-society1/AuthMod/releases)
 2. Place it in the server's `mods/` folder
 3. Set `spawn-protection=0` in `server.properties`
 4. Start the server
@@ -87,7 +87,13 @@ Format: `"username": "pbkdf2:120000:<salt_hex>:<hash_hex>"`.
    ```
    The wrapper downloads Gradle 8.1.1 automatically — no local Gradle install needed.
    The first build downloads Minecraft/Forge dependencies and may take 5–15 minutes.
-3. The mod jar appears at `build/libs/authmod-1.5.0.jar`
+3. The mod jar appears at `build/libs/authmod-1.5.1.jar`
+
+---
+
+## Fixed in 1.5.1
+
+- Fixed inventory synchronization when joining and after authentication. The server now sends the complete player menu in the correct slot order, preventing items from appearing in crafting or armor slots after reconnecting.
 
 ---
 

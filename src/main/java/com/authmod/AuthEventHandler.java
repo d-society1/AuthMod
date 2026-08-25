@@ -57,6 +57,7 @@ public class AuthEventHandler {
         lastPosition.put(player, new double[]{player.getX(), player.getY(), player.getZ()});
 
         lockPlayer(player);
+        syncInventoryMenu(player);
         sendAuthMessage(player, Lang.joinLocale(player));
     }
 
@@ -260,8 +261,17 @@ public class AuthEventHandler {
     private static void restorePlayer(ServerPlayer player) {
         GameType mode = previousGameMode.remove(player.getUUID());
         player.setGameMode(mode == null ? GameType.SURVIVAL : mode);
-        player.inventoryMenu.broadcastChanges();
+        syncInventoryMenu(player);
         lastPosition.remove(player);
+    }
+
+    /**
+     * Отправляет полный InventoryMenu в его ванильном порядке: крафт, броню,
+     * основной инвентарь, хотбар и левую руку. Нельзя отправлять только
+     * player.getInventory().items: в нём 36 слотов, а в меню игрока — 46.
+     */
+    private static void syncInventoryMenu(ServerPlayer player) {
+        player.server.getPlayerList().sendAllPlayerInfo(player);
     }
 
     private static ServerPlayer getPlayer(String username) {
